@@ -29,8 +29,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 if os.environ['DEBUG'] == 'False':
+    DEBUG = False
     SECRET_KEY = uuid.uuid4()
     ALLOWED_HOSTS = ['*']
+    import django_heroku
+    django_heroku.settings(locals())
 
 # Application definition
 
