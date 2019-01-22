@@ -36,7 +36,7 @@ class ImageClass():
         self.rgb565 = meta_width + meta_height + buffer
 
     def save(self):
-        save_filename = ''.join(self.filename.split('.')[:-1]) + '_cvt.tft'
+        save_filename = ''.join(self.filename.split('.')[:-1]) + '.tft'
         with open(save_filename, 'bw') as file:
             file.write(self.rgb565)
 
@@ -44,6 +44,7 @@ class ImageClass():
 if __name__ == "__main__":
     directory = os.path.join(os.path.dirname(__file__), 'test_images/*.png')
     files_list = glob.glob(directory)
-    print(files_list[0])
-    image = ImageClass(files_list[0])
-    image.save()
+
+    for file in files_list:
+        image = ImageClass(file)
+        image.save()
