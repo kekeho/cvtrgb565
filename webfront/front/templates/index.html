@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>design</title>
+    <title>CVTRGB565</title>
     <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="static/css/dh-header-non-rectangular.css">
@@ -15,16 +15,19 @@
     <header class="dh-header-non-rectangular">
         <div class="header__bg"></div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean navbar-inverse navbar-fixed-top">
-            <div class="container"><a class="navbar-brand" href="#" style="padding:30px;height:78px;font-weight:bold;font-size:50px;">CVTRGB565</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div
-                    class="collapse navbar-collapse" id="navcol-1">
+            <div class="container">
+                <a class="navbar-brand" href="#" style="padding:30px;height:78px;font-weight:bold;font-size:50px;">CVTRGB565</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto" style="margin-top:13px;">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#diferencial" uk-scroll="offset:50">GITHUB</a></li>
                     </ul>
-            </div>
+                </div>
             </div>
         </nav>
-        <h1>Lorem ipsum</h1>
         <div class="container">
             <div class="col-md-12 dh-header-non-rectangular-container">
                 <h1>画像ファイルをRGB565に変換</h1>
@@ -32,12 +35,25 @@
             </div>
         </div>
     </header>
-    <div class="contact-clean" style="background-color: rgb(255,255,255);">
-        <form method="post">
+    <div class="contact-clean">
+        <form action='/' method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <h2 class="text-center">Convert</h2>
-            <p style="color: rgb(91,91,91);">変換したいファイルを選択してください。</p>
-            <div class="form-group"><input class="form-control is-invalid" type="email" name="email" placeholder="Email"><small class="form-text text-danger">正しいZIPファイルをアップロードしてください。</small></div>
-            <div class="form-group"><button class="btn btn-primary" type="submit">UPLOAD</button></div>
+            <p>変換したいファイルを選択してください。</p>
+            <div class="form-group">
+                <input class="form-control" type="file" name="file" placeholder="ZIPFILE">
+                {% if error %}
+                <small class="form-text text-danger">正しいZIPファイルをアップロードしてください。</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">UPLOAD</button>
+                {% if download_url %}
+                <a href="{{ download_url }}" class="btn btn-primary">
+                    DOWNLOAD
+                </a>
+                {% endif %}
+            </div>
         </form>
     </div>
     <script src="static/js/jquery.min.js"></script>
