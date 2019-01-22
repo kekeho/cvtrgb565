@@ -28,13 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-if os.environ['DEBUG'] == 'False':
-    DEBUG = False
-    SECRET_KEY = uuid.uuid4()
-    ALLOWED_HOSTS = ['*']
-    import django_heroku
-    django_heroku.settings(locals())
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,3 +123,11 @@ STATIC_ROOT = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+
+# for heroku
+if os.environ['DEBUG'] == 'False':
+    DEBUG = False
+    SECRET_KEY = uuid.uuid4()
+    ALLOWED_HOSTS = ['*']
+    import django_heroku
+    django_heroku.settings(locals())
