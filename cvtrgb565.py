@@ -42,7 +42,7 @@ class ImageClass():
 
 
 if __name__ == "__main__":
-    directory = os.path.join(os.path.dirname(__file__), 'test_images/*.png')
+    directory = os.path.join(os.path.dirname(__file__), '*.png')
     files_list = glob.glob(directory)
 
     for file in files_list:
