@@ -126,7 +126,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
 
 # for heroku
 if 'DEBUG' in os.environ.keys() and os.environ['DEBUG'] == 'False':
-    DEBUG = False
+    # DEBUG = False
     SECRET_KEY = uuid.uuid4()
     ALLOWED_HOSTS = ['*']
     import django_heroku
