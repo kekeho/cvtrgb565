@@ -5,7 +5,7 @@ flake8==3.6.0
 gunicorn==19.9.0
 mccabe==0.6.1
 numpy==1.16.0
-Pillow==5.4.1
+Pillow==6.2.0
 psycopg2==2.7.7
 pycodestyle==2.4.0
 pyflakes==2.0.0
